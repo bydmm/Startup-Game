@@ -6,17 +6,24 @@ class KillPM
   end
 
   def probability
-    0.5
+    0.1
   end
 
   def happen(remain_difficulty)
     return remain_difficulty if no_pm
+    return remain_difficulty if happen?
     puts '程序员们忍无可忍，砍死了产品经理，项目难度减小10%'
     kill_pm
-    remain_difficulty = remain_difficulty * 0.9
+    remain_difficulty * 0.9
   end
 
   private
+
+  def happen?
+    rand_num = rand(100)
+    vs = 100 - probability * 100
+    vs >= rand_num
+  end
 
   def kill_pm
     @has_pm = false
@@ -132,9 +139,7 @@ class StartupGame
 
   def random_events
     events.each do |event|
-      if rand(100) >= (100 - (event.probability * 100))
-        @remain_difficult = event.happen(@remain_difficulty)
-      end
+      @remain_difficult = event.happen(@remain_difficulty)
     end
   end
 
