@@ -16,4 +16,9 @@ class SixSeconds < Coder
       remain_difficulty + fallback
     end
   end
+
+  def pay(company_money)
+    puts "#{name}领取了#{salary}元薪水, 然而6秒就花完了"
+    company_money = company_money - salary
+  end
 end
