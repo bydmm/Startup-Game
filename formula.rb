@@ -1,3 +1,34 @@
+# Events
+
+class KillPM
+  def initialize
+    @has_pm = true
+  end
+
+  def probability
+    0.5
+  end
+
+  def happen(remain_difficulty)
+    return remain_difficulty if no_pm
+    puts '程序员们忍无可忍，砍死了产品经理，项目难度减小10%'
+    kill_pm
+    remain_difficulty = remain_difficulty * 0.9
+  end
+
+  private
+
+  def kill_pm
+    @has_pm = false
+  end
+
+  def no_pm
+    @has_pm == false
+  end
+end
+
+# Coders
+
 class D
   def name
     'D菊'
@@ -63,11 +94,19 @@ class StartupGame
   end
 
   def coders
-    [
-      D.new,
-      SixSeconds.new,
-      Stone.new
-    ]
+    @coders ||=
+      [
+        D.new,
+        SixSeconds.new,
+        Stone.new
+      ]
+  end
+
+  def events
+    @events ||=
+      [
+        KillPM.new
+      ]
   end
 
   def run
@@ -75,7 +114,8 @@ class StartupGame
       @week += 1
       puts "第#{@week}周开始了，键盘的敲击声响起"
       puts "==============================="
-      dally_work
+      random_events
+      weekly_work
       puts "第#{@week}周结束了，还剩下#{@remain_difficulty.round}点困难度等待开发"
       puts "==============================="
     end
@@ -84,15 +124,27 @@ class StartupGame
 
   def opening
     puts "#{coders.map(&:name).join(' ')}决定一起开发一款屌炸天的应用《#{@project_name}》，以此实现财务财务自由的目标"
-    puts "经过一番估计,#{@project_name}的开发难度为#{@estimate_project_difficulty}点困难度，大家决定立马开工!"
+    puts "经过一番估计,#{@project_name}的MVP的开发难度为#{@estimate_project_difficulty}点困难度，大家决定立马开工!"
     puts "==============================="
   end
 
   private
 
-  def dally_work
+  def random_events
+    events.each do |event|
+      if rand(100) >= (100 - (event.probability * 100))
+        @remain_difficult = event.happen(@remain_difficulty)
+      end
+    end
+  end
+
+  def weekly_work
     coders.each do |coder|
       @remain_difficulty = coder.work(@remain_difficulty)
+      if @remain_difficulty < 0
+        @remain_difficulty = 0
+        break
+      end
     end
   end
 end
