@@ -1,3 +1,5 @@
+require './helper/helper.rb'
+
 require './coder.rb'
 Dir["./coders/*.rb"].each { |file| require file }
 
@@ -44,7 +46,8 @@ class StartupGame
       one_week
       forword = (old_remain_difficulty - @project.remain_difficulty).round
       puts "第#{@week}周结束了，成功完成了#{forword}点困难度， 还剩下#{@project.remain_difficulty.round}点困难度等待开发"
-      puts ""
+      puts "按回车进入下一周..."
+      STDIN.gets
     end
     if @company.money > 0
       puts '项目上线，等待他们的是...'
@@ -56,7 +59,7 @@ class StartupGame
   def opening
     puts "#{coders.map(&:name).join(',')}决定一起开发一款屌炸天的应用《#{@project.name}》，以此实现财务财务自由的目标。"
     puts "经过一番估计,#{@project.name}的最小可行版本的开发难度为#{@project.estimate_project_difficulty}点困难度"
-    puts "他们成立了#{@company.name}, 和投资人忽悠了一阵PPT后拿到了#{@company.angel_fund}元天使资金, 大家决定立马开工!"
+    puts "他们成立了#{@company.name}, 和投资人忽悠了一阵PPT后拿到了#{@company.angel_fund.thousand_separate}元天使资金, 大家决定立马开工!"
     puts ""
   end
 
@@ -94,7 +97,7 @@ class StartupGame
     coders.each do |coder|
       @company.money = coder.pay(@company.money)
     end
-    puts "共计发出工资：#{old_money - @company.money}，#{@company.name}剩余资金#{@company.money}"
+    puts "共计发出工资：#{old_money - @company.money}，#{@company.name}剩余资金#{@company.money.thousand_separate}"
     puts "==================================================="
   end
 end

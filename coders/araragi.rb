@@ -1,4 +1,4 @@
-class araragi < Coder
+class Araragi < Coder
   def initialize
     @name = '阿垃垃圾君'
     @salary = 3000
