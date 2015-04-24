@@ -42,6 +42,8 @@ ruby game.rb
 
 ## Obzer
 
+## w叔
+
 # 现诚邀更多群众演员/程序员， 有兴趣请PR
 
 如何提交pull request 来参加游戏？
