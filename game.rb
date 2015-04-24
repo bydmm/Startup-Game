@@ -1,3 +1,6 @@
+#!/bin/env ruby
+#encoding: UTF-8
+
 require './helper/helper.rb'
 
 require './coder.rb'
@@ -29,7 +32,10 @@ class StartupGame
         Stone.new,
         GrandPaFour.new,
         Araragi.new,
-        Wolf.new
+        Wolf.new,
+        BlackUncleTree.new,
+        Ltype.new,
+        Obzer.new
       ]
   end
 
