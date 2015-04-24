@@ -24,11 +24,11 @@ class StartupGame
   def coders
     @coders ||=
       [
-        D.new,
-        SixSeconds.new,
-        Stone.new,
-        GrandPaFour.new,
-        Araragi.new,
+        # D.new,
+        # SixSeconds.new,
+        # Stone.new,
+        # GrandPaFour.new,
+        # Araragi.new,
         LittleLongLong.new
       ]
   end
