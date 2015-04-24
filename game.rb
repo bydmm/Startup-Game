@@ -36,7 +36,8 @@ class StartupGame
         BlackUncleTree.new,
         Ltype.new,
         Obzer.new,
-        Araragi.new
+        Araragi.new,
+        Wuncle.new
       ]
   end
 
