@@ -39,7 +39,12 @@ ruby game.rb
 
 ## ltype
 
-现诚邀更多群众演员/程序员， 有兴趣请PR
+# 现诚邀更多群众演员/程序员， 有兴趣请PR
+
+如何提交pull request 来参加游戏？
+
+https://help.github.com/articles/using-pull-requests/
+
 
 # LECENSE
 
