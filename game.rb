@@ -29,7 +29,8 @@ class StartupGame
         Stone.new,
         GrandPaFour.new,
         Araragi.new,
-        Wolf.new
+        Wolf.new,
+        BlackUncleTree.new
       ]
   end
 
