@@ -3,6 +3,8 @@
 运行游戏请执行
 
 ```ruby
+bundle install # add all ruby libs
+
 ruby game.rb
 ```
 
@@ -13,8 +15,6 @@ ruby game.rb
 ## 教主
 
 ## 石头巨巨
-
-## 四爷
 
 ## 四爷
 
