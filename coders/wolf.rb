@@ -1,4 +1,4 @@
-class SixSeconds < Coder
+class LittleLongLong < Coder
   def initialize
     @name = '小狼狼'
     @salary = 5_000

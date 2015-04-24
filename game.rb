@@ -27,7 +27,9 @@ class StartupGame
         D.new,
         SixSeconds.new,
         Stone.new,
-        GrandPaFour.new
+        GrandPaFour.new,
+        Araragi.new,
+        LittleLongLong.new
       ]
   end
 
