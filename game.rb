@@ -1,19 +1,13 @@
 #!/bin/env ruby
 #encoding: UTF-8
 
+require 'pry'
 require './helper/helper.rb'
 
-require './coder.rb'
-Dir["./coders/*.rb"].each { |file| require file }
-
-require './event.rb'
-Dir["./events/*.rb"].each { |file| require file }
-
-require './company.rb'
-Dir["./companies/*.rb"].each { |file| require file }
-
-require './project.rb'
-Dir["./projects/*.rb"].each { |file| require file }
+Dir['./core/*.rb'].each { |file| require file }
+Dir['./events/*.rb'].each { |file| require file }
+Dir['./companies/*.rb'].each { |file| require file }
+Dir['./projects/*.rb'].each { |file| require file }
 
 class StartupGame
   attr_accessor :week
@@ -22,23 +16,11 @@ class StartupGame
     @week = 0
     @company = Fivecent.new
     @project = UberBeating.new
+    @hire_sys = HireSystem.new(self)
   end
 
   def coders
-    @coders ||=
-      [
-        D.new,
-        SixSeconds.new,
-        Stone.new,
-        GrandPaFour.new,
-        Araragi.new,
-        Wolf.new,
-        BlackUncleTree.new,
-        Ltype.new,
-        Obzer.new,
-        Araragi.new,
-        Wuncle.new
-      ]
+    @hire_sys.coders
   end
 
   def events
@@ -48,7 +30,13 @@ class StartupGame
       ]
   end
 
+  def hire_coders
+    @hire_sys.hire
+  end
+
   def run
+    puts "经过一番估计, 大家认为#{@project.name}的开发难度为#{@project.estimate_project_difficulty}点困难度, 这可是个不小的工程，要加油干了。"
+    puts ""
     while @project.remain_difficulty > 0 && @company.money > 0
       self.week += 1
       old_remain_difficulty = @project.remain_difficulty
@@ -67,10 +55,11 @@ class StartupGame
   end
 
   def opening
-    puts "#{coders.map(&:name).join(',')}决定一起开发一款屌炸天的应用《#{@project.name}》，以此实现财务财务自由的目标。"
-    puts "经过一番估计,#{@project.name}的最小可行版本的开发难度为#{@project.estimate_project_difficulty}点困难度"
-    puts "他们成立了#{@company.name}, 和投资人忽悠了一阵PPT后拿到了#{@company.angel_fund.thousand_separate}元天使资金, 大家决定立马开工!"
-    puts ""
+    puts "你决定一起开发一款屌炸天的应用《#{@project.name}》，以此实现财务财务自由的目标。"
+    puts "然后你成立了#{@company.name}, 和投资人忽悠了一阵PPT后拿到了#{@company.angel_fund.thousand_separate}元天使资金。"
+    puts "点子和钱都有了，就差几个程序员了"
+    puts "按回车进入下一步..."
+    STDIN.gets
   end
 
   private
@@ -114,4 +103,5 @@ end
 
 game = StartupGame.new
 game.opening
+game.hire_coders
 game.run

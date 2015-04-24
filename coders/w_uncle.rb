@@ -1,4 +1,4 @@
-class Wuncle < Coder
+class WUncle < Coder
   def initialize
     @name = 'w叔'
     @salary = 1500

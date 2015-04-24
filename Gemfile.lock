@@ -1,10 +1,18 @@
 GEM
   remote: http://ruby.taobao.org/
   specs:
+    coderay (1.1.0)
+    method_source (0.8.2)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     ruby-progressbar (1.7.5)
+    slop (3.6.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  pry
   ruby-progressbar
