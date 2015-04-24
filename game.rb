@@ -1,3 +1,6 @@
+#!/bin/env ruby
+# encoding: utf-8
+
 require './helper/helper.rb'
 
 require './coder.rb'
