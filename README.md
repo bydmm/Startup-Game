@@ -37,6 +37,8 @@ ruby game.rb
 
 ## 黑叔叔
 
+## ltype
+
 现诚邀更多群众演员/程序员， 有兴趣请PR
 
 # LECENSE
