@@ -29,7 +29,7 @@ class StartupGame
         Stone.new,
         GrandPaFour.new,
         Araragi.new,
-        LittleLongLong.new
+        Wolf.new
       ]
   end
 
