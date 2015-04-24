@@ -33,7 +33,8 @@ class StartupGame
         GrandPaFour.new,
         Araragi.new,
         Wolf.new,
-        BlackUncleTree.new
+        BlackUncleTree.new,
+        Ltype.new
       ]
   end
 
