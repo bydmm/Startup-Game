@@ -35,7 +35,8 @@ class StartupGame
         Wolf.new,
         BlackUncleTree.new,
         Ltype.new,
-        Obzer.new
+        Obzer.new,
+        Wuncle.new
       ]
   end
 
