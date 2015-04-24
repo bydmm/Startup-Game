@@ -1,7 +1,7 @@
 class Obzer < Coder
   def initialize
     @name = 'Ob'
-    @salary = 1500 + random
+    @salary = 1500 
   end
 
   def work(remain_difficulty)
