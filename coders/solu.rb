@@ -1,13 +1,13 @@
 class Solu < Coder
   def initialize
     @name = 'solu君'
-    @salary = 1800 
+    @salary = 1800
   end
 
   def work(remain_difficulty)
     random = rand(10)
     if random >= 0 and random < 2
-      forward = rand(1...20) 
+      forward = rand(1...20)
       puts "#{name}五月病发作，工作懒散，项目推进#{forward}"
       remain_difficulty - forward
     elsif random >= 2 and random < 4
@@ -23,6 +23,7 @@ class Solu < Coder
       remain_difficulty
     end
   end
+
   def pay(company_money)
     puts "#{name}领取了#{salary}元薪水! 然而全部拿了去败手办！！"
     company_money - salary
