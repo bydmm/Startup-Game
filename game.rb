@@ -1,7 +1,9 @@
 #!/bin/env ruby
-#encoding: UTF-8
+# encoding: UTF-8
 
 require 'pry'
+require 'rainbow'
+
 require './helper/helper.rb'
 
 Dir['./core/*.rb'].each { |file| require file }
@@ -19,6 +21,33 @@ class StartupGame
     @hire_sys = HireSystem.new(self)
   end
 
+  def opening
+    puts '你决定一起开发一款屌炸天的应用' + @project.name + '以此实现财务财务自由的目标。'
+    puts "你成立了#{@company.name}, 你拿出了你毕生的积蓄#{@company.color_angel_fund}作为启动资金。"
+    puts '点子和钱都有了，就差几个程序员了'
+    Keyboard.next
+  end
+
+  def hire_coders
+    @hire_sys.start_hire
+  end
+
+  def run
+    puts "经过一番估计, 大家认为#{@project.name}的开发难度为#{@project.estimate_project_difficulty}点困难度, 这可是个不小的工程，要加油干了。"
+    puts
+    while @project.remain_difficulty > 0 && @company.money > 0
+      one_week
+      Keyboard.next
+    end
+    if @company.money > 0
+      puts '项目上线，等待他们的是...'
+    else
+      puts '资金耗尽，项目失败...'
+    end
+  end
+
+  private
+
   def coders
     @hire_sys.coders
   end
@@ -30,44 +59,20 @@ class StartupGame
       ]
   end
 
-  def hire_coders
-    @hire_sys.hire
-  end
-
-  def run
-    puts "经过一番估计, 大家认为#{@project.name}的开发难度为#{@project.estimate_project_difficulty}点困难度, 这可是个不小的工程，要加油干了。"
-    puts ""
-    while @project.remain_difficulty > 0 && @company.money > 0
-      self.week += 1
-      old_remain_difficulty = @project.remain_difficulty
-      puts "第#{@week}周开始了，键盘的敲击声响起"
-      one_week
-      forword = (old_remain_difficulty - @project.remain_difficulty).round
-      puts "第#{@week}周结束了，成功完成了#{forword}点困难度， 还剩下#{@project.remain_difficulty.round}点困难度等待开发"
-      puts "按回车进入下一周..."
-      STDIN.gets
-    end
-    if @company.money > 0
-      puts '项目上线，等待他们的是...'
-    else
-      puts '资金耗尽，项目失败...'
-    end
-  end
-
-  def opening
-    puts "你决定一起开发一款屌炸天的应用《#{@project.name}》，以此实现财务财务自由的目标。"
-    puts "然后你成立了#{@company.name}, 和投资人忽悠了一阵PPT后拿到了#{@company.angel_fund.thousand_separate}元天使资金。"
-    puts "点子和钱都有了，就差几个程序员了"
-    puts "按回车进入下一步..."
-    STDIN.gets
-  end
-
-  private
-
   def one_week
+    self.week += 1
+    old_remain_difficulty = @project.remain_difficulty
+    puts "第#{@week}周开始了，键盘的敲击声响起"
+
     random_events
     weekly_work
+
+    @hire_sys.fire?
+    @hire_sys.hire?
+
     pay_salary if salary_day?
+    forword = (old_remain_difficulty - @project.remain_difficulty).round
+    puts "第#{@week}周结束了，成功完成了#{forword}点困难度， 还剩下#{@project.remain_difficulty.round}点困难度等待开发"
   end
 
   def random_events
@@ -91,13 +96,14 @@ class StartupGame
   end
 
   def pay_salary
-    puts "==================发薪水咯=========================="
+    puts '==================发薪水咯=========================='
     old_money = @company.money
     coders.each do |coder|
       @company.money = coder.pay(@company.money)
     end
-    puts "共计发出工资：#{old_money - @company.money}，#{@company.name}剩余资金#{@company.money.thousand_separate}"
-    puts "==================================================="
+    cost = old_money - @company.money
+    puts "共计发出工资：#{cost}，#{@company.name}剩余资金#{@company.color_money}"
+    puts '==================================================='
   end
 end
 

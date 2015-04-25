@@ -8,7 +8,7 @@ class WUncle < Coder
     forward = rand(5...10)
     #puts "由于机房爆炸,#{name}被所有大佬抓出来艹翻了，导致项目进度下降#{forward}"
     puts RanddomEvents(forward)
-    remain_difficulty * (1.0 - -forward)
+    remain_difficulty - forward
   end
 
   def pay(company_money)

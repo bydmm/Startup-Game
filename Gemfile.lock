@@ -7,6 +7,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    rainbow (2.0.0)
     ruby-progressbar (1.7.5)
     slop (3.6.0)
 
@@ -15,4 +16,5 @@ PLATFORMS
 
 DEPENDENCIES
   pry
+  rainbow
   ruby-progressbar

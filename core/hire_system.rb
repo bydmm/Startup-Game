@@ -1,42 +1,81 @@
 class HireSystem
-  attr_accessor :coders, :available_coders
+  attr_accessor :coders, :available_coders, :min_coders, :max_coders
 
   def initialize(game)
     @coders = []
     @game = game
     @available_coders = []
+    @min_coders = 1
+    @max_coders = 3
     load_coders
   end
 
-  def hire
-    puts '你可以招募三名程序员，请谨慎选择:'
+  def start_hire
+    hire
     puts ''
+    puts "#{@coders.map(&:name).join(', ')}带着创富的梦想加入你。"
+    Keyboard.next
+  end
+
+  def hire?
+    return unless could_hire?
+    puts '你有空余的工位, 你需要招募员工么'
+    Keyboard.conform do
+      hire
+    end
+  end
+
+  def fire?
+    return unless could_fire?
+    puts
+    puts '你可以解雇让你不爽的员工'
+    Keyboard.conform do
+      fire
+    end
+  end
+
+  private
+
+  def hire
+    return unless could_hire?
+    puts "你可以最多可以雇佣#{max_coders}名程序员，请谨慎选择:"
     available_coders.each do |coder|
-      break if @coders.count >= 3
+      break unless could_hire?
       puts '-----'
-      puts "程序员: #{coder.name}"
-      puts '输入y加入团队, 或者按回车跳过:'
-      user_input = STDIN.gets.delete!("\n")
-      if user_input == 'y'
+      puts "程序员: #{coder.name} 薪水: #{coder.salary.color_salary}"
+      Keyboard.conform do
         @coders.push coder
         puts "#{coder.name}加入了你的团队。"
+        puts
       end
     end
-    if @coders.count < 1
-      puts '---------error-------------'
-      puts '你至少需要一名程序员加入你的团队!'
-      puts '---------error-------------'
+    if @coders.count < @min_coders
+      puts Rainbow("你至少需要#{@min_coders}名程序员加入你的团队!").red
       puts ''
       hire
       return
     end
-    puts ""
-    puts "#{@coders.map(&:name).join(', ')}带着创富的梦想加入你。"
-    puts "按回车进入下一步..."
-    STDIN.gets
   end
 
-  private
+  def fire
+    return unless could_fire?
+    @coders.each do |coder|
+      puts "程序员: #{coder.name}"
+      Keyboard.conform do
+        @coders.delete coder
+        puts "#{coder.name}离开了你的团队。"
+        puts
+      end
+    end
+  end
+
+  def could_hire?
+    @coders.count < @max_coders
+  end
+
+  def could_fire?
+    @coders.count > @min_coders
+  end
 
   def load_coders
     Dir['./coders/*.rb'].each do |file|
@@ -44,5 +83,9 @@ class HireSystem
       class_name = file.split('/').last.split('.').first.camelize
       @available_coders.push Object.const_get(class_name).new
     end
+  end
+
+  def available_coders
+    @available_coders - @coders
   end
 end
