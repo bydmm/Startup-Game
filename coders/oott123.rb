@@ -18,15 +18,15 @@ class Oott123 < Coder
   def types
     [
       { :prefix => "勤劳能干", :color => :blue,
-        :ability => 3, :salary => 12167, :inc => 0.2 },
+        :ability => 3, :salary => 12167, :inc => 0.21 },
       { :prefix => "物美价廉", :color => :yellow,
-        :ability => 5, :salary => 3333, :inc => 0.2 },
+        :ability => 5, :salary => 3333, :inc => 0.15 },
       { :prefix => "好吃懒做", :color => :red,
-        :ability => 1, :salary => 2333, :inc => 0.5 },
+        :ability => 1, :salary => 2333, :inc => 0.52 },
       { :prefix => "即将超神", :color => :green,
-        :ability => 10, :salary => 10000, :inc => 0.4 },
+        :ability => 15, :salary => 10303, :inc => 0.41 },
       { :prefix => "资历平平", :color => :red,
-        :ability => 4, :salary => 5233, :inc => 0.1 }
+        :ability => 4, :salary => 5233, :inc => 0.31 }
     ]
   end
 
@@ -68,15 +68,16 @@ class Oott123 < Coder
     if productivity > 0
       productivity = productivity * @type[:ability]
     else
-      if rand(5) > 2
+      p = rand(1...10) * @type[:ability] * 0.8
+      if p > 8
         productivity = productivity / @type[:ability] # 但好的程序猿可能降低自己遇到的困难的难度
       else
         productivity = productivity
       end
     end
-    productivity = productivity + rand(-50...50)  # 天有不测风云，加入并非能力可控因素
+    productivity = productivity + rand(-20...80)  # 天有不测风云，加入并非能力可控因素，降低游戏难度
     puts work_description(productivity)
-    remain_difficulty -= productivity
+    remain_difficulty = remain_difficulty - productivity
     @week = @week + 1
     remain_difficulty
   end
