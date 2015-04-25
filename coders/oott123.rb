@@ -23,9 +23,9 @@ class Oott123 < Coder
       { :prefix => "好吃懒做", :color => :red,
         :ability => 1, :salary => 2333, :inc => 0.5 },
       { :prefix => "即将超神", :color => :green,
-        :ability => 20, :salary => 10000, :inc => 0.4 },
+        :ability => 10, :salary => 10000, :inc => 0.4 },
       { :prefix => "资历平平", :color => :red,
-        :ability => 7, :salary => 5233, :inc => 0.1 }
+        :ability => 4, :salary => 5233, :inc => 0.1 }
     ]
   end
 
@@ -58,18 +58,57 @@ class Oott123 < Coder
       puts "#{name}表示自从上次解雇后并无心工作，本周并无进度。"
       return remain_difficulty
     end
-    if rand(10) > 3
-      forward = rand(100...500)
-      puts "#{name}奋笔疾书，成功将项目推进#{forward}"
-      remain_difficulty -= forward
+    productivity = rand(-100...100) # 遇到困难的比例是相同的
+    if productivity > 0
+      productivity = productivity * @type[:ability]
     else
-      bugs = rand(1...5)
-      fallback = bugs * rand(0...50)
-      puts "#{name}奋笔疾书，却引入了#{bugs}个BUG, 项目难度增加#{fallback}"
-      remain_difficulty += fallback
+      if rand(5) > 2
+        productivity = productivity / @type[:ability] # 但好的程序猿可能降低自己遇到的困难的难度
+      else
+        productivity = productivity
+      end
     end
+    productivity += rand(-50...50)  # 天有不测风云，加入并非能力可控因素
+    puts work_description(productivity)
+    remain_difficulty -= productivity
     @week = @week + 1
     remain_difficulty
+  end
+
+  def work_description(productivity)
+    descriptions = []
+    if productivity > 0
+      descriptions.concat([
+        "#{name}用心工作，项目进展顺利，进度推进了 %d。",
+        "#{name}努力工作，项目进度推进了 %d。",
+        "#{name}连夜加班，项目进度推进了 %d。",
+        "#{name}暴打了 PM 一顿，项目推进了 %d。",
+        "#{name}得到同事的真传，项目进度推进了 %d。",
+        "#{name}运用敏捷开发策略，项目进度推进了 %d。",
+        { :text => "#{@name}开始发展了一段办公室恋情，同时项目进度也推进了 %d。",
+          :flag => [{:id => 'fall_in_love_with_fellow', :op => :set}, {:id => 'fall_in_love', :op => :set}] }
+        ])
+    else
+      descriptions.concat([
+        "#{name}遇到了一些瓶颈，项目进度被推迟了 %d。",
+        "#{name}表示 PHP 是最好的语言，重构了项目的核心部分，结果惨遭性能瓶颈，项目进度推迟了 %d。",
+        "#{name}在一台 VPS 上配置了 unicorn ，成功的占满了所有的内存导致项目进度推迟了 %d。",
+        "#{name}为了花括号是否应该另起一行和同事起了争执，项目进度被推迟了 %d。",
+        "#{name}在代码里用了 23 种设计模式，被骂得狗血淋头，项目进度推迟了 %d。",
+        "#{name}加班过度，使用 rm -rf 的时候多敲了一个空格，导致测试环境被清空，项目进度推迟了 %d。",
+        "#{name}接了一些私活，项目进度被推迟了 %d。"
+        ])
+    end
+    description = descriptions.sample
+    if description.is_a?(Hash)
+      flags = description[:flag]
+      if not flags.is_a?(Array)
+        flags = [flags]
+      end
+      # TODO: 处理 flags
+      description = description[:text]
+    end
+    description % productivity.abs
   end
 
   def pay(company_money)
