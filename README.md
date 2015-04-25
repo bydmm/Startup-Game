@@ -109,9 +109,15 @@ end
 
 然后使用github的Pull Request功能将你的修改提交到这边来
 
-参考：如何提交Pull Request来参加游戏开发？
+参考:
+
+如何提交Pull Request来参加游戏开发？
 
 https://help.github.com/articles/using-pull-requests/
+
+如何更新你的fork到最新版本？
+
+https://help.github.com/articles/syncing-a-fork/
 
 # 本项目是完全开放的
 
