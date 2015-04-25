@@ -21,12 +21,12 @@ ruby -v
 ```ruby
 bundle install # add all ruby libs
 
-ruby game.rb
+ruby game.rb start
 ```
 
 # 感谢以下程序猿友情出演
 
-D, 教主, 石头巨巨, 四爷, 小狼狼, 阿垃垃圾君, 黑叔叔, ltype, Obzer, w叔, oott123
+Aquariuslt, 阿垃垃圾君, 黑叔树, D菊, 游鱼彩虹, 四爷, Gstar, ltype, Ludwig, Ob, 即将超神的三三, 教主, solu君, 石头, w叔, 小狼狼石头巨巨, 四爷, 小狼狼, 阿垃垃圾君, 黑叔叔, ltype, Obzer, w叔, oott123
 
 这么有趣的群众活动，还不赶快参加一个？
 
