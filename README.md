@@ -32,7 +32,11 @@ D, 教主, 石头巨巨, 四爷, 小狼狼, 阿垃垃圾君, 黑叔叔, ltype, O
 
 # 活动交流帖
 
+v2ex:
+http://www.v2ex.com/t/186277
 
+ruby china
+https://ruby-china.org/topics/25313
 
 # 参加方法
 
