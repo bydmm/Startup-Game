@@ -28,6 +28,6 @@ class Obzer < Coder
   end
   def pay(company_money)
     puts "#{name}的薪水实在是太低了!他不好意思告诉你们他领了多少薪水!#{salary} "
-    company_money = company_money - salary
+    company_money - salary
   end
 end

@@ -12,6 +12,6 @@ class Aquariuslt < Coder
 
   def pay(company_money)
     puts "#{name}领取了#{salary}元薪水, 直接全款存进了购买Mac Pro的御用款中"
-    company_money = company_money - salary
+    company_money - salary
   end
 end

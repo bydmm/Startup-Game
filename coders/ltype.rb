@@ -19,6 +19,6 @@ class Ltype < Coder
 
   def pay(company_money)
     puts "#{name}领取了#{salary}元薪水, 购买了一个saber手办并放于办公桌上，第二天发现被扫地阿姨丢了"
-    company_money = company_money - salary
+    company_money - salary
   end
 end

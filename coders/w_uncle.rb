@@ -13,7 +13,7 @@ class WUncle < Coder
 
   def pay(company_money)
     puts "#{name}领取了#{salary}元薪水, 并表示会继续奋斗"
-    company_money = company_money - salary
+    company_money - salary
   end
 
   def RanddomEvents(forward)

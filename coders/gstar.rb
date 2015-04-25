@@ -28,6 +28,6 @@ class Gstar < Coder
   def pay(company_money)
     #get salary.
     puts "#{name}领取了#{salary}元薪水, 并不知道钱花在哪里，反正就是说没有了。"
-    company_money = company_money - salary
+    company_money - salary
   end
 end
