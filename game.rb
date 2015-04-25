@@ -1,4 +1,4 @@
-#!/bin/env ruby
+#!/usr/bin/env ruby
 # encoding: UTF-8
 
 require 'pry'
@@ -107,7 +107,21 @@ class StartupGame
   end
 end
 
-game = StartupGame.new
-game.opening
-game.hire_coders
-game.run
+require 'thor'
+
+class GameCLI < Thor
+  desc 'start [COMMAND]', 'Start Game'
+  def start
+    game = StartupGame.new
+    game.opening
+    game.hire_coders
+    game.run
+  end
+
+  desc 'staff [COMMAND]', 'Thanks to all contributors'
+  def staff
+    HireSystem.staff
+  end
+end
+
+GameCLI.start(ARGV)

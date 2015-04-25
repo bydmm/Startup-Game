@@ -7,7 +7,11 @@ class HireSystem
     @available_coders = []
     @min_coders = 1
     @max_coders = 3
-    load_coders
+    @available_coders = HireSystem.load_coders
+  end
+
+  def self.staff
+    puts 'Many thanks to: ' + load_coders.map(&:name).join(', ')
   end
 
   def start_hire
@@ -77,12 +81,14 @@ class HireSystem
     @coders.count > @min_coders
   end
 
-  def load_coders
+  def self.load_coders
+    coders = []
     Dir['./coders/*.rb'].each do |file|
       require file
       class_name = file.split('/').last.split('.').first.camelize
-      @available_coders.push Object.const_get(class_name).new
+      coders.push Object.const_get(class_name).new
     end
+    coders
   end
 
   def available_coders
