@@ -1,7 +1,7 @@
 
 # 创业游戏
 
-![screen shoot](https://raw.githubusercontent.com/bydmm/Startup-Game/master/images/shoot.png)
+![screen shoot](https://raw.githubusercontent.com/bydmm/Startup-Game/master/images/demo.gif)
 
 # 进展
 
