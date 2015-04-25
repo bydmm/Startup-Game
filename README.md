@@ -3,6 +3,23 @@
 
 ![screen shoot](https://raw.githubusercontent.com/bydmm/Startup-Game/master/images/shoot.png)
 
+# 进展
+
+2015-4-25
+
+> 游戏运行方式修改为标准CLI交互，于是请这样进入游戏。
+
+```
+ruby game.rb start
+```
+
+> 增加动态显示所有coder的方法
+
+```
+ruby game.rb staff
+```
+
+
 # 运行环境
 
 请先检查ruby版本是否为2.0.0
@@ -12,7 +29,6 @@ ruby -v
 ````
 
 如果不是 请参照各系统升级的方法，升级为2.0.0（或以上）
-
 
 # 运行
 
