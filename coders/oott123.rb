@@ -11,13 +11,13 @@ class Oott123 < Coder
   end
 
   def salary(month = @month)
-    (@type[:salary] * (1 + @type[:inc] * (month / 4))).to_int
+    @type[:salary] * (1 + @type[:inc] * (month / 4))
   end
 
   def types
     [
       { :prefix => "勤劳能干", :color => :blue,
-        :ability => 3, :salary => 12167, :inc => 0.3 },
+        :ability => 3, :salary => 12167, :inc => 0.2 },
       { :prefix => "物美价廉", :color => :yellow,
         :ability => 5, :salary => 3333, :inc => 0.2 },
       { :prefix => "好吃懒做", :color => :red,
@@ -48,7 +48,7 @@ class Oott123 < Coder
       # 不涨薪
       "#{u.sample}。"
     else
-      "#{u.sample}，并提出加薪请求：如果下个月工资不涨到#{salary(@month+1)}，就请#{Rainbow("立刻解雇他").red}。"
+      "#{u.sample}，并提出加薪到#{salary(@month+1)}元。如果不愿意，请#{Rainbow("立刻解雇他").red}。"
     end
   end
 
