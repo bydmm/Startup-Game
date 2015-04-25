@@ -5,11 +5,11 @@ require 'pry'
 require 'rainbow'
 require 'thor'
 
-require './helper/helper.rb'
-Dir['./core/*.rb'].each { |file| require file }
-Dir['./events/*.rb'].each { |file| require file }
-Dir['./companies/*.rb'].each { |file| require file }
-Dir['./projects/*.rb'].each { |file| require file }
+require_relative './helper/helper.rb'
+Dir[__dir__ + '/core/*.rb'].each { |file| require file }
+Dir[__dir__ + '/events/*.rb'].each { |file| require file }
+Dir[__dir__ + '/companies/*.rb'].each { |file| require file }
+Dir[__dir__ + '/projects/*.rb'].each { |file| require file }
 
 class GameCLI < Thor
   desc 'start [COMMAND]', 'Start Game'
