@@ -131,9 +131,7 @@ class Oott123 < Coder
     end
     description = descriptions.sample
     if description.is_a?(Hash)
-      puts description[:flag]
       produce_flags(description[:flag])
-      puts @flags
       description = description[:text]
     end
     description % productivity.abs
