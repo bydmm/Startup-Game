@@ -3,6 +3,7 @@ GEM
   specs:
     coderay (1.1.0)
     method_source (0.8.2)
+    minitest (5.5.1)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -16,6 +17,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  minitest
   pry
   rainbow
   ruby-progressbar
