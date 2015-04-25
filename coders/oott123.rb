@@ -11,7 +11,7 @@ class Oott123 < Coder
   end
 
   def salary(month = @month)
-    @type[:salary] * (1 + @type[:inc] * (month / 4))
+    (@type[:salary] * (1 + @type[:inc] * (month / 4))).to_int
   end
 
   def types
@@ -48,22 +48,28 @@ class Oott123 < Coder
       # 不涨薪
       "#{u.sample}。"
     else
-      "#{u.sample}，并提出加薪到#{salary(@month+1)}元。如果不愿意，请#{Rainbow("立刻解雇他").red}。"
+      "#{u.sample}，并提出加薪到#{salary(@month+1)}元。如果不愿意，请#{Rainbow("下周就解雇他").red}。"
     end
   end
 
   def work(remain_difficulty)
-    @week = @week + 1
+    # 检查是否黑心老板
+    if @week / 4 > @month
+      puts "#{name}表示自从上次解雇后并无心工作，本周并无进度。"
+      return remain_difficulty
+    end
     if rand(10) > 3
       forward = rand(100...500)
       puts "#{name}奋笔疾书，成功将项目推进#{forward}"
-      remain_difficulty - forward
+      remain_difficulty -= forward
     else
       bugs = rand(1...5)
       fallback = bugs * rand(0...50)
       puts "#{name}奋笔疾书，却引入了#{bugs}个BUG, 项目难度增加#{fallback}"
-      remain_difficulty + fallback
+      remain_difficulty += fallback
     end
+    @week = @week + 1
+    remain_difficulty
   end
 
   def pay(company_money)
