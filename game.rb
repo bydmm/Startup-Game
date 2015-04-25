@@ -103,7 +103,7 @@ class StartupGame
     end
     cost = old_money - @company.money
     puts "共计发出工资：#{cost}，#{@company.name}剩余资金#{@company.color_money}"
-    puts '==================================================='
+    puts '===================================================='
   end
 end
 

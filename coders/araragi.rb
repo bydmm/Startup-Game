@@ -20,5 +20,4 @@ class Araragi < Coder
     puts "#{name}领取了#{salary}元薪水, 立马给暴雪爸爸充值,让爸爸再爱我一次。"
     company_money - salary
   end
-
 end
