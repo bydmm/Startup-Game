@@ -14,6 +14,38 @@ class HireSystem
     puts 'Many thanks to: ' + load_coders.map(&:name).join(', ')
   end
 
+  def self.estimate
+    test_times = 1_000
+    coders_rank = []
+    load_coders.each do |coder|
+      progress = 0
+      salary = 0
+      test_times.times do
+        form = 10_000_000
+        to = coder.work(form)
+        progress += form - to
+        salary += coder.salary
+      end
+      coder_rank =
+        {
+          avg_salary: salary / test_times,
+          avg_progress: progress / test_times,
+          coder: coder
+        }
+      coders_rank.push coder_rank
+    end
+    coders_rank =
+      coders_rank.sort do |x, y|
+        x = x[:avg_progress].to_f / x[:avg_salary].to_f
+        y = y[:avg_progress].to_f / y[:avg_salary].to_f
+        y <=> x
+      end
+    coders_rank.each do |coder_rank|
+      useful = coder_rank[:avg_progress].to_f / coder_rank[:avg_salary].to_f
+      puts "#{coder_rank[:coder].name}: #{coder_rank[:avg_progress]}(点/周) / #{(coder_rank[:avg_salary] / 4.0).round(2)}(元/周) = #{useful.round(4)}"
+    end
+  end
+
   def start_hire
     hire
     puts ''

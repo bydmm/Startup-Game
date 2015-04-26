@@ -24,6 +24,11 @@ class GameCLI < Thor
   def staff
     HireSystem.staff
   end
+
+  desc 'cheat [COMMAND]', 'Guess'
+  def cheat
+    HireSystem.estimate
+  end
 end
 
 GameCLI.start(ARGV)
