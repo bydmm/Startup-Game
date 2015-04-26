@@ -127,6 +127,11 @@ end
 ```
 如果你的文件名和类名遵守snack_case to PascalCase 的命名规则的话，你的类就会自动被读取到游戏中了。
 
+可以用这个方法测试一下你的代码是否能再游戏中正确运行。
+```
+ruby ./test/test_coders.rb
+```
+
 修改完成后使用```git push origin master```提交到你的副本（fork）中
 
 然后使用github的Pull Request功能将你的修改提交到这边来
