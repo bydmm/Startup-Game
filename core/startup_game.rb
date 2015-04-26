@@ -20,20 +20,63 @@ class StartupGame
   end
 
   def run
+    mvp
+  end
+
+  private
+
+  def mvp
     puts "经过一番估计, 大家认为#{@project.name}的开发难度为#{@project.estimate_project_difficulty}点困难度, 这可是个不小的工程，要加油干了。"
     puts
     while @project.remain_difficulty > 0 && @company.money > 0
-      one_week
+      work_one_week
       Keyboard.next
     end
     if @company.money > 0
-      puts '项目上线，等待他们的是...'
+      puts "#{@project.name}的第一版终于撸出来啦，他已经具备基本功能"
+      beta
     else
       puts '资金耗尽，项目失败...'
     end
   end
 
-  private
+  def beta
+    @project.beta_init
+    @company.money += 500_000
+    @online_week = 0
+    beta_info
+    while @project.remain_difficulty > 0 && @company.money > 0 && @project.users <= 1_000_000
+      work_one_week
+      user_growth
+      Keyboard.next
+    end
+    if @project.remain_difficulty <= 0
+      puts "#{@project.explode_point[:name]}终于撸出来啦, 用户疯狂的涌进服务器"
+      @project.users *= 100
+      @project.users = 1_000_000 if @project.users <= 1_000_000
+      puts "用户数量爆炸到#{@project.color_users}, Disk is panic!"
+    end
+    if @project.users >= 1_000_000
+      puts "投资人很满意，决定追加投资，红杉基金也闻风而动.."
+    end
+    if @company.money <= 0
+      puts '资金耗尽，项目失败...'
+    end
+  end
+
+  def beta_info
+    puts "大家七手八脚的把代码架设到了云服务器上, 然后呼朋唤友用户量瞬间增长到#{@project.color_users}"
+    puts '同时，大家都明白，项目必须有一个爆点才能吸引到大量用户。'
+    puts '在前期开发的过程中，大家就注意到一个可能的爆点，那就是:'
+    Keyboard.next
+    puts Rainbow(@project.explode_point[:name]).red.underline
+    puts Rainbow(@project.explode_point[:description]).blue.bright
+    Keyboard.next
+    puts '一名投资人察觉到了你们的项目，听取了爆点的汇报后非常满意, ' \
+         "决定投资#{Rainbow('500,000').red}元, \n" \
+         '并表示如果用户量增长到1,000,000人, 就领投A轮'
+    Keyboard.next
+  end
 
   def coders
     @hire_sys.coders
@@ -46,7 +89,7 @@ class StartupGame
       ]
   end
 
-  def one_week
+  def work_one_week
     self.week += 1
     old_remain_difficulty = @project.remain_difficulty
     puts "第#{@week}周开始了，键盘的敲击声响起"
@@ -60,6 +103,14 @@ class StartupGame
     pay_salary if salary_day?
     forword = (old_remain_difficulty - @project.remain_difficulty).round
     puts "第#{@week}周结束了，成功完成了#{forword}点困难度， 还剩下#{@project.remain_difficulty.round}点困难度等待开发"
+  end
+
+  def user_growth
+    @online_week += 1
+    growth = @project.user_growth(@online_week).round
+    @project.users += growth
+    puts "注册用户增长了#{growth.color_users}, 大家倍受鼓舞"
+    puts "注册用户累计达到了#{@project.color_users}"
   end
 
   def random_events
