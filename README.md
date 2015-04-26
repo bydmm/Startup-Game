@@ -39,6 +39,7 @@ ruby game.rb staff
 请先检查ruby版本是否为2.0.0
 
 ```ruby
+ruby -v
 
 ````
 
