@@ -1,5 +1,5 @@
 class Coder
-  attr_accessor :name, :salary
+  attr_accessor :name, :salary , :job
 
   def name
     Rainbow(@name).cyan
