@@ -1,4 +1,4 @@
-class lomo < Coder
+class Lomo < Coder
   def initialize
     @name = '老猫'
     @salary = 4000
