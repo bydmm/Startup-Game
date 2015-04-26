@@ -10,7 +10,7 @@
 > 添加了cheat指令, 如果你有选择困难, 可以试试这个
 
 ```
-ruby game.rb start
+ruby game.rb cheat
 ```
 
 2015-4-25

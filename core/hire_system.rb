@@ -42,7 +42,7 @@ class HireSystem
       end
     coders_rank.each do |coder_rank|
       useful = coder_rank[:avg_progress].to_f / coder_rank[:avg_salary].to_f
-      puts "#{coder_rank[:coder].name}: #{coder_rank[:avg_progress]}(点/周) / #{(coder_rank[:avg_salary] / 4.0).round(2)}(元/周) = #{useful.round(4)}"
+      puts "#{coder_rank[:coder].name}: #{coder_rank[:avg_progress]}(点/周) / #{(coder_rank[:avg_salary] / 4.0).round(2)}(元/周) = #{useful.round(4)}(点/元*周)"
     end
   end
 
