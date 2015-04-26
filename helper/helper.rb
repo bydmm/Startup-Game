@@ -62,6 +62,6 @@ class Keyboard
   def self.conform
     puts '按Y确认, 按其他键跳过'
     user_input = STDIN.gets.delete!("\n")
-    yield if user_input == 'y'
+    yield if user_input.downcase == 'y'
   end
 end
