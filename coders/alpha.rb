@@ -4,7 +4,7 @@ class Alpha < Coder
 		@salary = 2999
 	end
 
-	def work(remian_difficulty)
+	def work(remain_difficulty)
 		seed = rand(10)
 		if seed > 5
 			forward = rand(10...100)

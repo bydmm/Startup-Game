@@ -9,9 +9,14 @@ class StartupGame
   end
 
   def opening
-    puts '你决定一起开发一款屌炸天的应用' + @project.name + '以此实现财务财务自由的目标。'
-    puts "你成立了#{@company.name}, 你拿出了你毕生的积蓄#{@company.color_angel_fund}作为启动资金。"
-    puts '点子和钱都有了，就差几个程序员了'
+    puts Rainbow('『2015又是一幅好光景啊』').yellow+'，加班结束之后的你看了看四周，已是深夜。'
+    puts '你握紧了拳头，心想'+Rainbow('『我不能再这么加班下去了，我要改变世界』').yellow+'，灌木丛里的野狗叫了一声，以示鼓励。'
+    puts '你决定一起开发一款屌炸天的应用，叫做：'
+    @project.name = STDIN.gets.chomp
+    puts '你决定给公司起名为：'
+    @company.name = STDIN.gets.chomp
+    puts "你成立了"+@company.name+", 你拿出了你毕生的积蓄#{@company.color_angel_fund}作为#{@project.name}的启动资金。"
+    puts '点子和钱都有了，就差几个员工了'
     Keyboard.next
   end
 
@@ -102,7 +107,8 @@ class StartupGame
 
     pay_salary if salary_day?
     forword = (old_remain_difficulty - @project.remain_difficulty).round
-    puts "第#{@week}周结束了，成功完成了#{forword}点困难度， 还剩下#{@project.remain_difficulty.round}点困难度等待开发"
+    puts "第"+Rainbow(week).red+"周结束了，成功完成了"+Rainbow(forword).red+"点困难度， 还剩下#{@project.remain_difficulty.round}点困难度等待开发"
+
   end
 
   def user_growth

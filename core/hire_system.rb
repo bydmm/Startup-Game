@@ -17,7 +17,7 @@ class HireSystem
   def start_hire
     hire
     puts ''
-    puts "#{@coders.map(&:name).join(', ')}带着创富的梦想加入你。"
+    puts "#{@coders.map(&:name).join(', ')}带着发家致富的梦想加入你的团队。"
     Keyboard.next
   end
 
@@ -42,11 +42,14 @@ class HireSystem
 
   def hire
     return unless could_hire?
-    puts "你可以最多可以雇佣#{max_coders}名程序员，请谨慎选择:"
+    puts "你可以最多可以雇佣#{max_coders}名员工，请谨慎选择:"
     available_coders.each do |coder|
       break unless could_hire?
       puts '-----'
-      puts "程序员: #{coder.name} 薪水: #{coder.salary.color_salary}"
+      if coder.job != '产品汪'
+        coder.job = '程序员'
+      end
+      puts "#{coder.job}: #{coder.name} 薪水: #{coder.salary.color_salary}"
       Keyboard.conform do
         @coders.push coder
         puts "#{coder.name}加入了你的团队。"
@@ -54,7 +57,7 @@ class HireSystem
       end
     end
     if @coders.count < @min_coders
-      puts Rainbow("你至少需要#{@min_coders}名程序员加入你的团队!").red
+      puts Rainbow("你至少需要#{@min_coders}名员工加入你的团队!").red
       puts ''
       hire
       return
@@ -64,6 +67,10 @@ class HireSystem
   def fire
     return unless could_fire?
     @coders.each do |coder|
+      if coder.job != '产品汪'
+        coder.job = '程序员'
+      end
+      puts "#{coder.job}: #{coder.name}"
       puts "程序员: #{coder.name}"
       Keyboard.conform do
         @coders.delete coder
