@@ -39,7 +39,7 @@ ruby game.rb staff
 请先检查ruby版本是否为2.0.0
 
 ```ruby
-ruby -v
+
 ````
 
 如果不是 请参照各系统升级的方法，升级为2.0.0（或以上）
@@ -48,15 +48,42 @@ ruby -v
 
 运行游戏请执行
 
-```ruby
+```bash
 bundle install # add all ruby libs
 
 ruby game.rb start
 ```
 
+# 无法运行?
+
+> 检查是不是ruby 2.0以上
+
+```bash
+ruby -v
+```
+
+> 是不是没有bundle install 安装依赖库？
+
+```bash
+bundle install
+```
+
+> bundle不存在?
+
+```bash
+gem install bundler
+```
+
+> 不知道怎么安装ruby?
+
+《如何快速正确的安装 Ruby, Rails 运行环境》
+https://ruby-china.org/wiki/install_ruby_guide
+
+最后一步安装rails可以省略
+
 # 感谢以下程序猿友情出演
 
-Aquariuslt, 阿垃垃圾君, 黑叔树, D菊, 游鱼彩虹, 四爷, Gstar, ltype, Ludwig, Ob, 即将超神的三三, 教主, solu君, 石头, w叔, 小狼狼石头巨巨, 四爷, 小狼狼, 阿垃垃圾君, 黑叔叔, ltype, Obzer, w叔, oott123
+路人Alpha, Aquariuslt, 阿垃垃圾君, 黑叔树, D菊, 游鱼彩虹, 四爷, Gstar, Kabie, 存在的虚无, kokdemo, iLeeXu, 老猫, ltype, Ludwig, Ob, 即将超神的三三, 教主, solu君, 石头, Tangooricha, Thordox, w叔, 小狼狼
 
 这么有趣的群众活动，还不赶快参加一个？
 
@@ -88,7 +115,7 @@ https://ruby-china.org/topics/25313
 
 ```ruby
 # you_name.rb 请注意文件名和类名的大小写关系
-class YourName < Coder
+class YourName < Coder # 还有一种叫ProductManager 实现方法是一样的
   # 初始化你的姓名和薪水，一个闪亮亮的名字是成功的开始
   def initialize
     @name = 'Your Name'

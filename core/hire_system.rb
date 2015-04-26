@@ -23,7 +23,7 @@ class HireSystem
       test_times.times do
         form = 10_000_000
         to = coder.work(form)
-        progress += form - to
+        progress += (form - to)
         salary += coder.salary
       end
       coder_rank =
@@ -78,9 +78,6 @@ class HireSystem
     available_coders.each do |coder|
       break unless could_hire?
       puts '-----'
-      if coder.job != '产品汪'
-        coder.job = '程序员'
-      end
       puts "#{coder.job}: #{coder.name} 薪水: #{coder.salary.color_salary}"
       Keyboard.conform do
         @coders.push coder
@@ -99,11 +96,7 @@ class HireSystem
   def fire
     return unless could_fire?
     @coders.each do |coder|
-      if coder.job != '产品汪'
-        coder.job = '程序员'
-      end
       puts "#{coder.job}: #{coder.name}"
-      puts "程序员: #{coder.name}"
       Keyboard.conform do
         @coders.delete coder
         puts "#{coder.name}离开了你的团队。"

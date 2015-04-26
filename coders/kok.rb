@@ -1,8 +1,7 @@
-class Kok < Coder
+class Kok < ProductManager
   def initialize
     @name = 'kokdemo'
     @salary = 4000
-    @job = '产品汪'
     @rageCode = 0
   end
 
@@ -18,7 +17,7 @@ class Kok < Coder
       puts "#{name}被#{@rageCode}个程序员痛打一顿，跪下道歉并删减了几个无用功能，项目难度减少了#{forward}，大家表示很欢迎这种日常活动"
       @rageCode = 0
       remain_difficulty -= forward
-    else 
+    else
       forward = rand(1...500)
       puts "#{name}想到了一个好主意，推进了整个项目#{forward}"
       remain_difficulty -= forward

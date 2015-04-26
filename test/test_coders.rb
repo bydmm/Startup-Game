@@ -5,6 +5,7 @@ require 'minitest/autorun'
 
 require_relative '../helper/helper.rb'
 Dir[__dir__ + '/../core/*.rb'].each { |file| require file }
+Dir[__dir__ + '/../jobs/*.rb'].each { |file| require file }
 Dir[__dir__ + '/../events/*.rb'].each { |file| require file }
 Dir[__dir__ + '/../companies/*.rb'].each { |file| require file }
 Dir[__dir__ + '/../projects/*.rb'].each { |file| require file }
