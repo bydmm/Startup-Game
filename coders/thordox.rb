@@ -1,4 +1,4 @@
-﻿class thordox < Coder
+﻿class Thordox < Coder
   def initialize
     @name = 'Thordox'
     @salary = 5000
