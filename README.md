@@ -1,7 +1,7 @@
 
 # 创业游戏
 
-![screen shoot](http://7xirrg.com1.z0.glb.clouddn.com/demo.gif)
+![screen shoot](https://raw.githubusercontent.com/bydmm/Startup-Game/master/images/demo.gif)
 
 # 进展
 
