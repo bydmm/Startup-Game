@@ -20,11 +20,12 @@ class HireSystem
     load_coders.each do |coder|
       progress = 0
       salary = 0
+      form = 1_000_000
       test_times.times do
-        form = 10_000_000
         to = coder.work(form)
         progress += (form - to)
         salary += coder.salary
+        form = to
       end
       coder_rank =
         {
@@ -42,7 +43,7 @@ class HireSystem
       end
     coders_rank.each do |coder_rank|
       useful = coder_rank[:avg_progress].to_f / coder_rank[:avg_salary].to_f
-      puts "#{coder_rank[:coder].name}: #{coder_rank[:avg_progress]}(点/周) / #{(coder_rank[:avg_salary] / 4.0).round(2)}(元/周) = #{useful.round(4)}(点/元*周)"
+      puts "#{coder_rank[:coder].name}: #{coder_rank[:avg_progress].round}(点/周) / #{(coder_rank[:avg_salary] / 4.0).round(2)}(元/周) = #{useful.round(4)}(点/元*周)"
     end
   end
 
