@@ -19,7 +19,7 @@ class TestCoders < Minitest::Test
       require file
       class_name = file.split('/').last.split('.').first.camelize
       coder = Object.const_get(class_name).new
-      5.times do
+      10.times do
         assert_equal true,
                      [Fixnum, Float].include?(coder.work(10_000_000).class),
                      "class #{class_name}.work should return number"
