@@ -7,11 +7,11 @@ class Rudy < Coder
   def work(remain_difficulty)
     workflow = rand 100
     case workflow
-    when 1..20
+    when 0..20
       fallback = rand(1..5)
       puts "#{name}早上正急急忙忙的跑步赶去打卡,结果迟到#{workflow}分钟,项目难度增加#{fallback}"
       remain_difficulty + fallback
-    when 21..60
+    when 21..80
       forward = rand(100...500)
       puts "#{name}努力奋斗，发扬不作死就不会死的精神，成功将项目推进#{forward}"
       remain_difficulty - forward
