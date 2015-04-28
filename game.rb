@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 # encoding: UTF-8
 
+require 'money'
 require 'pry'
 require 'rainbow'
 require 'thor'

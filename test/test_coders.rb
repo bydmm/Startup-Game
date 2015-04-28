@@ -2,6 +2,7 @@ require 'pry'
 require 'rainbow'
 require 'thor'
 require 'minitest/autorun'
+require 'money'
 
 require_relative '../helper/helper.rb'
 Dir[__dir__ + '/../core/*.rb'].each { |file| require file }
