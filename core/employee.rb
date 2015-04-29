@@ -6,7 +6,7 @@ class Employee
   end
 
   def pay(company_money)
-    puts "#{name}领取了#{salary.color_salary}元薪水"
+    puts "#{name}领取了#{salary.color_salary}薪水"
     company_money - salary
   end
 end
