@@ -1,4 +1,4 @@
-class YourName < Coder
+class Paruru < Coder
   def initialize
     @name = 'paruru'
     @salary = 22_000
