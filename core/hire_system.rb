@@ -79,7 +79,7 @@ class HireSystem
     available_coders.each do |coder|
       break unless could_hire?
       puts '-----'
-      puts "#{coder.job}: #{coder.name} 薪水: #{coder.salary.color_salary}"
+      puts "#{coder.job}: #{coder.name} 薪水: #{coder.salary.to_i.color_salary}"
       Keyboard.conform do
         @coders.push coder
         puts "#{coder.name}加入了你的团队。"
