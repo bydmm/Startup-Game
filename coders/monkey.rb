@@ -28,6 +28,6 @@ class Monkey < Coder
 
   def salary
     Money.add_rate("USD", "CNY", 6.1969)
-    Money.us_dollar(@salary * 100).exchange_to("CNY").to_f
+    Money.us_dollar(@salary * 100).exchange_to("CNY").to_i
   end
 end

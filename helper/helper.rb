@@ -1,4 +1,4 @@
-class Fixnum
+module NumberHelper
   def thousand_separate
     self.to_s.reverse.gsub(/...(?=.)/, '\&,').reverse
   end
@@ -46,6 +46,14 @@ class Fixnum
       end
     "#{colored_fund}元"
   end
+end
+
+class Fixnum
+  include NumberHelper
+end
+
+class Float
+  include NumberHelper
 end
 
 class String
