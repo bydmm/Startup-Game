@@ -84,7 +84,7 @@ https://ruby-china.org/wiki/install_ruby_guide
 
 # 感谢以下程序猿友情出演
 
-路人Alpha, Aquariuslt, 阿垃垃圾君, 黑叔树, D菊, 游鱼彩虹, 四爷, Gstar, Kabie, 存在的虚无, kokdemo, iLeeXu, 老猫, ltype, Ludwig, Ob, 即将超神的三三, 教主, solu君, 石头, Tangooricha, Thordox, w叔, 小狼狼
+路人Alpha, Aquariuslt, 阿垃垃圾君, 黑叔树, D菊, 游鱼彩虹, 四爷, Gstar, Kabie, 存在的虚无, kokdemo, iLeeXu, 老猫, ltype, Ludwig, Ob, 即将超神的三三, 教主, solu君, 石头, Tangooricha, Thordox, w叔, 小狼狼,泰德子
 
 这么有趣的群众活动，还不赶快参加一个？
 
