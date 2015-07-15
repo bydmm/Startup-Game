@@ -1,6 +1,6 @@
-class Lomo < Coder
+class Linhong < Coder
   def initialize
-    @name = '林 Hong'
+    @name = '林Hong'
     @salary = 6000
   end
 

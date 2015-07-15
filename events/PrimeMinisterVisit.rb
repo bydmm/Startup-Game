@@ -1,7 +1,7 @@
 class PrimeMinisterVisit < Event
   def initialize
     @has_Visited = false # At this time Li K*Q* was not in ZhongGuanCun.
-    @probability = 0.3
+    @probability = 0.1
   end
 
   def happen(remain_difficulty)
@@ -19,6 +19,6 @@ class PrimeMinisterVisit < Event
   end
 
   def noVisit
-    @has_Visited == false 
+    @has_Visited == false
   end
 end

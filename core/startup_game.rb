@@ -91,8 +91,10 @@ class StartupGame
     @events ||=
       [
         KillPM.new
-        #PrimeMinisterVisit.new
       ]
+      #[
+      #    PrimeMinisterVisit.new
+      # ]
   end
 
   def work_one_week
