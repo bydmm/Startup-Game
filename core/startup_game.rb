@@ -91,7 +91,7 @@ class StartupGame
     @events ||=
       [
         KillPM.new
-        PrimeMinisterVisit.new
+        #PrimeMinisterVisit.new
       ]
   end
 
