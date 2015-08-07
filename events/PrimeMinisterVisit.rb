@@ -5,9 +5,9 @@ class PrimeMinisterVisit < Event
   end
 
   def happen(remain_difficulty)
-    return remain_difficulty if noVisit
-    return remain_difficulty if happen?
-    puts '总理访问中关村，喝了一口互联网泡沫'
+    return remain_difficulty if visited?
+    return remain_difficulty unless happen?
+    puts Rainbow('总理访问中关村，喝了一口互联网泡沫, 项目难度减少20%').color(:red)
     doVisit
     remain_difficulty * 0.8
   end
@@ -18,7 +18,7 @@ class PrimeMinisterVisit < Event
     @has_Visited = true # At this Li had been to ZhongGuanCun
   end
 
-  def noVisit
-    @has_Visited == false
+  def visited?
+    @has_Visited == true
   end
 end

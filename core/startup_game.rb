@@ -90,11 +90,9 @@ class StartupGame
   def events
     @events ||=
       [
-        KillPM.new
+        KillPM.new,
+        PrimeMinisterVisit.new
       ]
-      #[
-      #    PrimeMinisterVisit.new
-      # ]
   end
 
   def work_one_week
@@ -111,7 +109,6 @@ class StartupGame
     pay_salary if salary_day?
     forword = (old_remain_difficulty - @project.remain_difficulty).round
     puts "第"+Rainbow(week).red+"周结束了，成功完成了"+Rainbow(forword).red+"点困难度， 还剩下#{@project.remain_difficulty.round}点困难度等待开发"
-
   end
 
   def user_growth

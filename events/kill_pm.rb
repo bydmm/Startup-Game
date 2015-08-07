@@ -5,9 +5,9 @@ class KillPM < Event
   end
 
   def happen(remain_difficulty)
-    return remain_difficulty if no_pm
-    return remain_difficulty if happen?
-    puts '程序员们忍无可忍，砍死了产品经理，项目难度减小10%'
+    return remain_difficulty if no_pm # We need a pm to kill
+    return remain_difficulty unless happen?
+    puts Rainbow('程序员们忍无可忍，砍死了产品经理，项目难度减小10%').color(:red)
     kill_pm
     remain_difficulty * 0.9
   end
