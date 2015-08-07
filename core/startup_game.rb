@@ -92,6 +92,9 @@ class StartupGame
       [
         KillPM.new
       ]
+      #[
+      #    PrimeMinisterVisit.new
+      # ]
   end
 
   def work_one_week

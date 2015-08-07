@@ -1,5 +1,5 @@
 class Employee
-  attr_accessor :name, :salary, :job
+  attr_accessor :name, :salary, :bonus ,:job
 
   def name
     Rainbow(@name).cyan
