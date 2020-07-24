@@ -1,7 +1,8 @@
 
-# 创业游戏
+# 创业游戏 [![Comment-on-Github.Party](https://img.shields.io/badge/Comment%20on-Github.Party-yellow.svg)](https://github.party/item?id=70)
 
 ![screen shoot](https://raw.githubusercontent.com/bydmm/Startup-Game/master/images/demo.gif)
+
 
 # 进展
 
